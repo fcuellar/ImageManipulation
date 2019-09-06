@@ -75,35 +75,44 @@ namespace ImageManipulation
             else
             {
                 //removes the last 3 characters from the file address into a new address
-                newAddress.Text = fileAddress.Text.Remove(fileAddress.TextLength - 3);
+                newAddress.Text = fileAddress.Text.Remove(fileAddress.TextLength - 4);
                 //cases for which type of file was selected
+
+                //counter to allow files to override
+                int counter = 0;
                 
+
                 if (comboBox1.SelectedItem.Equals("PNG"))
                 {
                     //image will be saved, adding the format to the end of the address and changing the actual image format
-                    newImage.Save(newAddress.Text + "png", System.Drawing.Imaging.ImageFormat.Png);
+                    newImage.Save(newAddress.Text + counter.ToString()+".png", System.Drawing.Imaging.ImageFormat.Png);
                     //disables button, must open new file
                     button2.Enabled = false;
                     button3.Enabled = false;
 
                     MessageBox.Show("Image has been saved");
+                    counter++;
 
                 }
                 else if (comboBox1.SelectedItem.Equals("JPG"))
                 {
-                    newImage.Save(newAddress.Text + "jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                    newImage.Save(newAddress.Text + counter.ToString()+".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                     button2.Enabled = false;
                     button3.Enabled = false;
 
                     MessageBox.Show("Image has been saved");
+                    counter++;
+
                 }
                 else if (comboBox1.SelectedItem.Equals("BMP"))
                 {
-                    newImage.Save(newAddress.Text + "bmp", System.Drawing.Imaging.ImageFormat.Bmp);
+                    newImage.Save(newAddress.Text + counter.ToString()+".bmp", System.Drawing.Imaging.ImageFormat.Bmp);
                     button2.Enabled = false;
                     button3.Enabled = false;
 
                     MessageBox.Show("Image has been saved");
+                    counter++;
+
                 }
                 else
                     MessageBox.Show("Please pick a New File Type");
